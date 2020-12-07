@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: category-service
+  profiles:
+    active: default
+
+
+
+server:
+  port: 9599
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${random.uuid}
+
+---
+spring:
+  profiles: default
+  cloud:
+    config:
+      uri: http://localhost:8888
+  jpa:
+      hibernate:
+          ddl-auto: update
+
+      properties:
+        hibernate:
+            dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  datasource:
+      url: "jdbc:postgresql://localhost:5432/stock_management"
+      username: postgres
+      password: R.yurdakul365
+
+---
+
