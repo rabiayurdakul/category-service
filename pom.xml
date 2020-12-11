@@ -48,7 +48,7 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- Spring Cloud
+        <!-- Spring Cloud-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
@@ -58,7 +58,7 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
             <version>2.2.5.RELEASE</version>
-        </dependency>-->
+        </dependency>
 
         <!-- Spring Data-->
         <dependency>
@@ -77,7 +77,7 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- Spring Logging
+        <!-- Spring Logging-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-sleuth</artifactId>
@@ -87,7 +87,7 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-sleuth-zipkin</artifactId>
             <version>2.2.5.RELEASE</version>
-        </dependency>-->
+        </dependency>
 
         <!-- Swagger -->
         <dependency>

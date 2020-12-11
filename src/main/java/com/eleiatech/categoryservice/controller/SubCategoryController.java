@@ -76,7 +76,7 @@ public class SubCategoryController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @DeleteMapping("/delete/{categoryId}")
+    @DeleteMapping("/delete/{categoryId}/category")
     public InternalApiResponse<String> deleteSubCategoryWithCategory(@PathVariable("categoryId") long categoryId){
         subCategoryRepositoryService.deleteSubCategoryWithCategory(categoryId);
 
@@ -88,7 +88,7 @@ public class SubCategoryController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @DeleteMapping("/delete/{companyId}")
+    @DeleteMapping("/delete/{companyId}/company")
     public InternalApiResponse<String> deleteSubCategoryWithCompany(@PathVariable("companyId") long companyId){
         subCategoryRepositoryService.deleteSubCategoryWithCompany(companyId);
 
@@ -119,7 +119,7 @@ public class SubCategoryController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/get/{categoryId}")
+    @GetMapping("/get/{categoryId}/category")
     public InternalApiResponse<List<SubCategoryResponse>> getSubCategoryWithCategory(@PathVariable("categoryId") long categoryId){
         List<SubCategory> subCategoryList = subCategoryRepositoryService.getSubCategoryWithCategory(categoryId);
 
@@ -140,7 +140,7 @@ public class SubCategoryController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/get/{companyId}")
+    @GetMapping("/get/{companyId}/company")
     public InternalApiResponse<List<SubCategoryResponse>> getSubCategoryWithCompany(@PathVariable("companyId") long companyId){
         List<SubCategory> subCategoryList = subCategoryRepositoryService.getSubCategoryWithCompany(companyId);
 

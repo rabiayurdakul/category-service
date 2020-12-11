@@ -24,7 +24,7 @@ public class CategoryController {
     private final ICategoryRepositoryService categoryRepositoryService;
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/create/{categoryName}")
+    @PostMapping("/create")
     public InternalApiResponse<CategoryResponse> createCategory(@RequestBody CategoryCreateRequest categoryCreateRequest) {
         Category category = categoryRepositoryService.createCategory(categoryCreateRequest);
         CategoryResponse categoryResponse = CategoryResponse.builder()
