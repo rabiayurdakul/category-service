@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/category")
 public class CategoryController {
@@ -42,7 +43,7 @@ public class CategoryController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @PostMapping("/update/{categoryId}")
+    @PutMapping("/update/{categoryId}")
     public InternalApiResponse<CategoryResponse> updateCategory(@PathVariable("categoryId") long categoryId, @RequestBody CategoryUpdateRequest categoryUpdateRequest) {
         Category category = categoryRepositoryService.updateCategory(categoryId, categoryUpdateRequest);
         CategoryResponse categoryResponse = CategoryResponse.builder()

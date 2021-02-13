@@ -38,6 +38,7 @@ public class SubCategoryRepositoryServiceImpl implements ISubCategoryRepositoryS
     public SubCategory updateSubCategory(long subCategoryId, SubCategoryUpdateRequest subCategoryUpdateRequest) {
         Category category = categoryRepository.getByCategoryIdAndDeletedFalse(subCategoryUpdateRequest.getCategoryId());
         SubCategory subCategory = SubCategory.builder()
+                .subCategoryId(subCategoryId)
                 .subCategoryName(subCategoryUpdateRequest.getSubCategoryName())
                 .category(category)
                 .updatedDate(new Date())

@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/sub-category")
 public class SubCategoryController {
@@ -44,11 +45,12 @@ public class SubCategoryController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @PostMapping("/update/{subCategoryId}")
+    @PutMapping("/update/{subCategoryId}")
     public InternalApiResponse<SubCategoryResponse> updateSubCategory(@PathVariable("subCategoryId") long subCategoryId, @RequestBody SubCategoryUpdateRequest subCategoryUpdateRequest){
         SubCategory subCategory = subCategoryRepositoryService.updateSubCategory(subCategoryId,subCategoryUpdateRequest);
 
         SubCategoryResponse subCategoryResponse = SubCategoryResponse.builder()
+                .subCategoryId(subCategory.getSubCategoryId())
                 .categoryId(subCategory.getCategory().getCategoryId())
                 .subCategoryName(subCategory.getSubCategoryName())
                 .companyId(subCategory.getCompanyId())

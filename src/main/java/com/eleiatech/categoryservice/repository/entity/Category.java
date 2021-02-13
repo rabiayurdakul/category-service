@@ -1,13 +1,8 @@
 package com.eleiatech.categoryservice.repository.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonFormat;;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -15,8 +10,6 @@ import java.util.Date;
 @Data
 @Builder
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "category", schema="stock_management")
 public class Category {
 

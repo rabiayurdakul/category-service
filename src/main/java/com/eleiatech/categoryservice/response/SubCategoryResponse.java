@@ -9,6 +9,8 @@ import java.util.Date;
 @Builder
 public class SubCategoryResponse {
 
+    private long subCategoryId;
+
     private long categoryId;
 
     private long companyId;
