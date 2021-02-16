@@ -37,13 +37,12 @@ public class SubCategoryRepositoryServiceImpl implements ISubCategoryRepositoryS
     @Override
     public SubCategory updateSubCategory(long subCategoryId, SubCategoryUpdateRequest subCategoryUpdateRequest) {
         Category category = categoryRepository.getByCategoryIdAndDeletedFalse(subCategoryUpdateRequest.getCategoryId());
-        SubCategory subCategory = SubCategory.builder()
-                .subCategoryId(subCategoryId)
-                .subCategoryName(subCategoryUpdateRequest.getSubCategoryName())
-                .category(category)
-                .updatedDate(new Date())
-                .companyId(subCategoryUpdateRequest.getCompanyId())
-                .build();
+        SubCategory subCategory = getSubCategory(subCategoryId);
+        subCategory.setSubCategoryName(subCategoryUpdateRequest.getSubCategoryName());
+        subCategory.setCategory(category);
+        subCategory.setUpdatedDate(new Date());
+        subCategory.setCompanyId(subCategoryUpdateRequest.getCompanyId());
+
         return subCategoryRepository.save(subCategory);
     }
 

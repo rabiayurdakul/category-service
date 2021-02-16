@@ -1,9 +1,12 @@
 package com.eleiatech.categoryservice.service.impl;
 
 import com.eleiatech.categoryservice.exception.exceptions.DataAlreadyDeletedException;
+import com.eleiatech.categoryservice.exception.exceptions.DataCannotDeletedException;
 import com.eleiatech.categoryservice.exception.exceptions.DataNotFoundException;
 import com.eleiatech.categoryservice.repository.CategoryRepository;
+import com.eleiatech.categoryservice.repository.SubCategoryRepository;
 import com.eleiatech.categoryservice.repository.entity.Category;
+import com.eleiatech.categoryservice.repository.entity.SubCategory;
 import com.eleiatech.categoryservice.request.CategoryCreateRequest;
 import com.eleiatech.categoryservice.request.CategoryUpdateRequest;
 import com.eleiatech.categoryservice.service.ICategoryRepositoryService;
@@ -19,6 +22,7 @@ import java.util.Objects;
 public class CategoryRepositoryServiceImpl implements ICategoryRepositoryService {
 
    private final CategoryRepository categoryRepository;
+   private final SubCategoryRepository subCategoryRepository;
 
 
     @Override
@@ -47,17 +51,23 @@ public class CategoryRepositoryServiceImpl implements ICategoryRepositoryService
 
     @Override
     public void deleteCategory(long categoryId) {
-       Category category;
+       List<SubCategory> subCategoryList =subCategoryRepository.getByCategoryCategoryIdAndDeletedFalse(categoryId);
+        Category category;
+       if(subCategoryList.size()>0)
+           throw new DataCannotDeletedException("Category", "Before you should delete sub-categories!");
 
-       try{
-           category = getCategory(categoryId);
 
-       }catch (DataNotFoundException dataNotFoundException){
-            throw new DataAlreadyDeletedException("Category "," Category Id: " + categoryId);
-       }
-       category.setDeleted(true);
-       category.setUpdatedDate(new Date());
-       categoryRepository.save(category);
+           try {
+               category = getCategory(categoryId);
+
+
+           } catch (DataNotFoundException dataNotFoundException) {
+               throw new DataAlreadyDeletedException("Category ", " Category Id: " + categoryId);
+           }
+           category.setDeleted(true);
+           category.setUpdatedDate(new Date());
+           categoryRepository.save(category);
+
     }
 
     @Override

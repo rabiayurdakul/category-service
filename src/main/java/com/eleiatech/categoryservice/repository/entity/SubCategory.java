@@ -2,8 +2,10 @@ package com.eleiatech.categoryservice.repository.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -13,6 +15,8 @@ import java.util.Date;
 @Data
 @Builder
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "sub_category", schema="stock_management")
 public class SubCategory {
 
@@ -21,8 +25,9 @@ public class SubCategory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long subCategoryId;
 
-    @JoinColumn(name = "category_id",nullable = false)
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "category_id",nullable = false,
+            foreignKey = @ForeignKey(name="fk_category_id" ))
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private Category category;

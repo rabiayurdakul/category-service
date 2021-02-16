@@ -1,15 +1,20 @@
 package com.eleiatech.categoryservice.repository.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Date;
 
 @Data
 @Builder
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "category", schema="stock_management")
 public class Category {
 
@@ -39,4 +44,7 @@ public class Category {
 
     @Column(name = "is_deleted")
     private boolean deleted;
+
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    private Collection<SubCategory> subCategories;
 }

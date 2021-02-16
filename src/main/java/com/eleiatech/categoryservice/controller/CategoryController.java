@@ -42,6 +42,7 @@ public class CategoryController {
                 .build();
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @ResponseStatus(HttpStatus.OK)
     @PutMapping("/update/{categoryId}")
     public InternalApiResponse<CategoryResponse> updateCategory(@PathVariable("categoryId") long categoryId, @RequestBody CategoryUpdateRequest categoryUpdateRequest) {

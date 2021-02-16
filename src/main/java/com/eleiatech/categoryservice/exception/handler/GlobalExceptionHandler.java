@@ -2,7 +2,7 @@ package com.eleiatech.categoryservice.exception.handler;
 
 import com.eleiatech.categoryservice.exception.exceptions.DataAlreadyDeletedException;
 import com.eleiatech.categoryservice.exception.exceptions.DataNotFoundException;
-import com.eleiatech.categoryservice.exception.exceptions.TypeCannotDeletedException;
+import com.eleiatech.categoryservice.exception.exceptions.DataCannotDeletedException;
 import com.eleiatech.categoryservice.response.InternalApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -35,8 +35,8 @@ public class GlobalExceptionHandler {
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(TypeCannotDeletedException.class)
-    public InternalApiResponse<String> handleTypeCannotDeletedException(TypeCannotDeletedException typeCannotDeletedException){
+    @ExceptionHandler(DataCannotDeletedException.class)
+    public InternalApiResponse<String> handleTypeCannotDeletedException(DataCannotDeletedException typeCannotDeletedException){
         return InternalApiResponse.<String>builder()
                 .httpStatus(HttpStatus.BAD_REQUEST)
                 .hasError(true)

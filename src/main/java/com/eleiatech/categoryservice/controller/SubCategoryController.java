@@ -128,6 +128,7 @@ public class SubCategoryController {
         List<SubCategoryResponse> subCategoryResponseList = subCategoryList.stream()
                 .map(arg-> SubCategoryResponse.builder()
                 .companyId(arg.getCompanyId())
+                 .subCategoryId((arg.getSubCategoryId()))
                 .categoryId(arg.getCategory().getCategoryId())
                 .subCategoryName(arg.getSubCategoryName())
                 .createdDate(arg.getCreatedDate())
@@ -148,6 +149,7 @@ public class SubCategoryController {
 
         List<SubCategoryResponse> subCategoryResponseList = subCategoryList.stream()
                 .map(arg-> SubCategoryResponse.builder()
+                        .subCategoryId(arg.getSubCategoryId())
                         .companyId(arg.getCompanyId())
                         .categoryId(arg.getCategory().getCategoryId())
                         .subCategoryName(arg.getSubCategoryName())

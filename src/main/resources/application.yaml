@@ -30,7 +30,8 @@ spring:
   datasource:
       url: "jdbc:postgresql://localhost:5432/stock_management"
       username: postgres
-      password: Asdf@1234 #R.yurdakul365
+      password: R.yurdakul365
+    #Asdf@1234
 
 ---
 
